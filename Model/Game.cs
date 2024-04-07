@@ -48,7 +48,7 @@ public class Game : IGame
         this.secondPlayer = secondPlayer;
         CurrentPlayer = firstPlayer;
         GameField.InitializeField(CurrentPlayer,firstPlayer, secondPlayer);
-        
+        IsEnded = false;
     }
 
 
@@ -71,10 +71,7 @@ public class Game : IGame
         SwitchPlayer();
     }
     
-    
-    
-    
-    private void CheckGameEnd()
+    public void CheckGameEnd()
     {
         
         var hasEmptyCells = GameField.HasEmptyCell();
@@ -100,7 +97,6 @@ public class Game : IGame
 
         
     }
-    
     protected virtual void EndGame(Player winner = null)
     {
         IsEnded = true;
@@ -111,25 +107,4 @@ public class Game : IGame
     {
         CurrentPlayer = (CurrentPlayer == firstPlayer) ? secondPlayer : firstPlayer;
     }
-    /*protected virtual void PrepareField()
-    {
-        field = new Cell[FieldSize, FieldSize];
-        for (int x = 0; x < FieldSize; x++)
-        {
-            for (int y = 0; y < FieldSize; y++)
-            {
-                field[x, y] = new Cell();
-            }
-        }
-            
-        int mid = FieldSize / 2;
-        field[mid - 1, mid - 1].MarkBy(secondPlayer);
-        field[mid - 1, mid].MarkBy(firstPlayer);
-        field[mid, mid - 1].MarkBy(firstPlayer);
-        field[mid, mid].MarkBy(secondPlayer);
-            
-        CalculateAndSetPossibleMoves();
-    }*/
-    
-    
 }

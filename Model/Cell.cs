@@ -8,7 +8,8 @@ public class Cell
     public bool IsEmpty => MarkedByPlayer == null;
         
     public bool IsPossibleMove { get; set; }
-    internal void MarkBy(Player player)
+
+    public void MarkBy(Player player)
     {
         if (player == null)
             throw new ArgumentNullException(nameof(player), "Player cannot be null.");
